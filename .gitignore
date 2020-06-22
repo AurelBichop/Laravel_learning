@@ -12,3 +12,4 @@ npm-debug.log
 yarn-error.log
 /database/migrations/2020_06_13_173155_create_courses_table.php
 /storage/app/public
+
