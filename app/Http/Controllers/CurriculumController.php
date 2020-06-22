@@ -7,6 +7,8 @@ use App\Http\Managers\VideoManager;
 use App\Section;
 use Cocur\Slugify\Slugify;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 
 class CurriculumController extends Controller
@@ -97,8 +99,15 @@ class CurriculumController extends Controller
 
     public function destroy($id,$sectionId)
     {
+        $course = Course::find($id);
         $section = Section::find($sectionId);
+        $fileToDelete = 'public/courses_sections/'. Auth::user()->id . '/' . $section->video;
+
+        if(Storage::exists($fileToDelete)){
+            Storage::delete($fileToDelete);
+        }
+
         $section->delete();
-        return redirect()->route('instructor.curriculum.index',$id)->with('success', 'la section a bien été supprimé');
+        return redirect()->route('instructor.curriculum.index',$course->id)->with('success', 'la section a bien été supprimée');
     }
 }

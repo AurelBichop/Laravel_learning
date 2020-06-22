@@ -7,7 +7,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="{{route('courses')}}">
                 <i class="fas fa-ellipsis-v"></i>
                 Suivre un cours
             </a>
@@ -22,7 +22,7 @@
         <li>
         </li>
         <li>
-            <a href="#">
+            <a href="{{route('instructor.index')}}">
                 <i class="fas fa-chalkboard-teacher"></i>
                 Formateur
             </a>
@@ -47,7 +47,7 @@
             </ul>
         </li>
         <li>
-            <a href="#">
+            <a href="{{route('cart.index')}}">
                 <i class="fas fa-shopping-cart"></i>
                 <span class="badge badge-pill badge-danger">1</span>
             </a>

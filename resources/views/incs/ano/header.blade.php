@@ -7,7 +7,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="{{route('courses')}}">
                 <i class="fas fa-ellipsis-v"></i>
                 Suivre un cours
             </a>

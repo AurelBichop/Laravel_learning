@@ -49,7 +49,7 @@ class InstructorController extends Controller
         $slugify = new Slugify();
         $course = new Course();
         $course->title = $request->input('title');
-        $course->slug = $slugify->slugify($request->input('description'));
+        $course->slug = $slugify->slugify($course->title);
         $course->subtitle = $request->input('subtitle');
         $course->description = $request->input('description');
         $course->category_id = $request->input('category');
@@ -141,5 +141,20 @@ class InstructorController extends Controller
         $course = Course::find($id);
         $course->delete();
         return redirect()->route('instructor.index')->with('success', 'le cours a bien été supprimé');
+    }
+
+    public function publish($id){
+        $course = Course::find($id);
+
+        if($course->price && count($course->sections)>0)
+        {
+            $course->is_published = true;
+            $course->save();
+
+            return redirect()->back()->with('success','Votre cours est en ligne !');
+        }
+
+        return redirect()->back()->with('danger','Votre cours doit avoir un tarif et une section vidéo avant d\'être publiable');
+
     }
 }
