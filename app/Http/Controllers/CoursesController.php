@@ -22,7 +22,6 @@ class CoursesController extends Controller
             ->limit(3)
             ->get();
 
-
         return view('courses.show',[
             'course'=>$course,
             'recommendations'=>$recommendations
