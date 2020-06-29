@@ -67,7 +67,7 @@
                         <a href="#" class="btn btn-block btn-light">Continuer vos achats</a>
                     </div>
                     <div class="col-sm-12 col-md-6 text-right">
-                        <a href="#" class="btn btn-lg btn-block btn-success text-uppercase">Payer</a>
+                        <a href="{{route('checkout.payement')}}" class="btn btn-lg btn-block btn-success text-uppercase">Payer</a>
                     </div>
                 </div>
             </div>

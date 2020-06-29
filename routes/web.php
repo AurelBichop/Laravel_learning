@@ -76,3 +76,9 @@ Route::get('/wish/{id}/destroy', 'WishListController@destroy')->name('wish.destr
 Route::get('/wish/{id}/tocart', 'WishListController@toCart')->name('wish.tocart');
 Route::get('/wish/{id}/towish', 'WishListController@toWishList')->name('wish.towish');
 
+/**
+ * Checkout
+ */
+Route::get('/checkout', 'CheckoutController@checkout')->name('checkout.payement');
+Route::post('/checkout/charge', 'CheckoutController@charge')->name('checkout.charge');
+Route::get('/checkout/success', 'CheckoutController@success')->name('checkout.success');
