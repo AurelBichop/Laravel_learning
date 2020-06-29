@@ -64,3 +64,4 @@ Route::get('/instructor/courses/{id}/curriculum/{section}/destroy', 'CurriculumC
  * Cart
  */
 Route::get('/cart', 'CartController@index')->name('cart.index');
+Route::get('/cart/{id}/store', 'CartController@store')->name('cart.store');
