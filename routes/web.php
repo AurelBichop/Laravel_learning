@@ -67,3 +67,12 @@ Route::get('/cart', 'CartController@index')->name('cart.index');
 Route::get('/cart/{id}/store', 'CartController@store')->name('cart.store');
 Route::get('/cart/{id}/destroy', 'CartController@destroy')->name('cart.destroy');
 Route::get('/cart/clear', 'CartController@clear')->name('cart.clear');
+
+/**
+ * WishList
+ */
+Route::get('/wish/{id}/store', 'WishListController@store')->name('wish.store');
+Route::get('/wish/{id}/destroy', 'WishListController@destroy')->name('wish.destroy');
+Route::get('/wish/{id}/tocart', 'WishListController@toCart')->name('wish.tocart');
+Route::get('/wish/{id}/towish', 'WishListController@toWishList')->name('wish.towish');
+

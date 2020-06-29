@@ -70,7 +70,7 @@
             @else
                 <ul class="dropdown px-2 py-2">
                     <li>
-                        <div class="empty-cart">
+                        <div class="empty-cart text-center">
                             <p>Votre panier est vide</p>
                             <a href="{{route('courses')}}" class="btn btn-link">Continuez vos achats</a>
                         </div>
@@ -81,18 +81,31 @@
         <li>
             <a href="#">
                 <i class="fas fa-heart"></i>
-                <span class="badge badge-pill badge-danger">1</span>
+                @if(count(\Cart::session(Auth::user()->id. '_wishlist')->getContent()) > 0)
+                    <span class="badge badge-pill badge-danger">{{count(\Cart::session(Auth::user()->id. '_wishlist')->getContent())}}</span>
+                @endif
             </a>
             <ul class="dropdown px-2 py-2">
-                <li>
-                    <div class="d-flex">
-                        <img class="avatar border-rounded" src="https://blog.hyperiondev.com/wp-content/uploads/2019/02/Blog-Types-of-Web-Dev.jpg"/>
-                        <div class="user-infos ml-3">
-                            <small>Titre du cours</small>
-                            <p class="text-danger">19,99 €</p>
-                        </div>
-                    </div>
-                </li>
+                @if(count(\Cart::session(Auth::user()->id. '_wishlist')->getContent()) > 0)
+                    @foreach(\Cart::session(Auth::user()->id. '_wishlist')->getContent() as $itemWish)
+                        <li>
+                            <div class="d-flex">
+                                <img class="avatar border-rounded" src="/storage/courses/{{$itemWish->model->user_id}}/{{$itemWish->model->image}}"/>
+                                <div class="user-infos ml-3">
+                                    <small>{{$itemWish->name}}</small>
+                                    <p class="text-danger">{{$itemWish->price}} €</p>
+                                </div>
+                            </div>
+                        </li>
+                    @endforeach
+                @else
+                        <li>
+                            <div class="empty-cart text-center">
+                                <p>Votre liste est vide</p>
+                                <a href="{{route('courses')}}" class="btn btn-link">voir les cours</a>
+                            </div>
+                        </li>
+                @endif
             </ul>
         </li>
         <li>
