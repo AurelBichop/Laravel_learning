@@ -65,3 +65,5 @@ Route::get('/instructor/courses/{id}/curriculum/{section}/destroy', 'CurriculumC
  */
 Route::get('/cart', 'CartController@index')->name('cart.index');
 Route::get('/cart/{id}/store', 'CartController@store')->name('cart.store');
+Route::get('/cart/{id}/destroy', 'CartController@destroy')->name('cart.destroy');
+Route::get('/cart/clear', 'CartController@clear')->name('cart.clear');

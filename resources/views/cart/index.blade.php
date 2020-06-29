@@ -5,8 +5,14 @@
 
 
 <div class="container mb-4 pb-5">
-    <p>2 cours dans le panier</p>
+    <p>{{count(\Cart::session(Auth::user()->id)->getContent())}} cours dans le panier</p>
     <div class="jumbotron">
+        @if(count(\Cart::session(Auth::user()->id)->getContent()) > 0)
+            <div class="d-flex justify-content-center mb-5">
+                <a href="{{route('cart.clear')}}" class="btn btn-block btn-light w-25">
+                    Vider le panier
+                </a>
+            </div>
         <div class="row">
             <div class="col-12">
                 <div class="table-responsive">
@@ -26,7 +32,7 @@
                                 <td><img class="cart-img" src="/storage/courses/{{ $course->model->user_id }}/{{ $course->model->image }}" /> </td>
                                 <td><p><b>{{ $course->model->title }}</b></p><p>{{ $course->model->user->name }}</p></td>
                                 <td class="text-left">
-                                    <small><a class="btn border" href="#">Supprimer</a></small><br>
+                                    <small><a class="btn border" href="{{route('cart.destroy', $course->id)}}">Supprimer</a></small><br>
                                     <small><a class="btn border" href="#">Enregistrer pour plus tard</a></small><br>
                                     <small><a class="btn border" href="#">Ajouter à la liste de souhaits</a></small>
                                 </td>
@@ -67,6 +73,19 @@
                 </div>
             </div>
         </div>
+        @else
+            <div class="empty-cart text-center">
+                <i class="fas fa-shopping-cart fa-7x">
+                    <h4 class="my-5">
+                        Votre panier est vide. Continuez vos achats et trouvez un cours !
+                        <a href="{{ route('courses') }}" class="primary-btn">
+                            Continuez vos achats
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </h4>
+                </i>
+            </div>
+        @endif
     </div>
     <div class="save-for-later jumbotron my-5">
         <h3>Enregistré pour plus tard</h3>
