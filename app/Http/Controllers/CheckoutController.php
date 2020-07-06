@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Managers\PayementManager;
+use App\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Stripe\Charge;
@@ -10,6 +12,13 @@ use Stripe\Stripe;
 
 class CheckoutController extends Controller
 {
+    private $payementManager;
+
+    public function __construct(PayementManager $payementManager)
+    {
+        $this->payementManager = $payementManager;
+    }
+
     public function checkout(){
         return view('checkout.payment');
     }
@@ -30,6 +39,18 @@ class CheckoutController extends Controller
                 'source' => $request->input('stripeToken'),
                 'receipt_email' => Auth::user()->email
             ]);
+
+            foreach (\Cart::getContent() as $item){
+                $instructor_part = $this->payementManager->getInstructorPart($cart->getTotal()+ $roundedTax);
+                $elearning_part = $this->payementManager->getElearningPart($cart->getTotal()+ $roundedTax);
+                Payment::create([
+                    'course_id' => $item->model->id,
+                    'amount' => $cart->getTotal()+ $roundedTax,
+                    'instructor_part' => $instructor_part,
+                    'elearning_part' => $elearning_part,
+                    'email' => Auth::user()->email
+                ]);
+            }
 
             return redirect()->route('checkout.success')->with('success', 'Paiement accepté');
 

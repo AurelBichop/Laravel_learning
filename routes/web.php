@@ -43,6 +43,7 @@ Route::get('/instructor/courses/{id}/edit/', 'InstructorController@edit')->name(
 Route::put('/instructor/courses/{id}/update', 'InstructorController@update')->name('instructor.update');
 Route::get('/instructor/courses/{id}/destroy', 'InstructorController@destroy')->name('instructor.destroy');
 Route::get('/instructor/courses/{id}/publish', 'InstructorController@publish')->name('instructor.publish');
+Route::get('/instructor/courses/{id}/participants', 'InstructorController@participant')->name('instructor.participants');
 
 /**
  * Tarification
