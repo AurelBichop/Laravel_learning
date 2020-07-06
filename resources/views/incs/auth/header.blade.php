@@ -1,3 +1,12 @@
+@php
+
+use App\CourseUser;
+
+$coursesUser = CourseUser::where('user_id', Auth::user()->id)->get();
+
+@endphp
+
+
 <nav class="mainmenu mobile-menu">
     <ul>
         <li class="active">
@@ -12,11 +21,14 @@
                 Suivre un cours
             </a>
             <ul class="dropdown px-2 py-3">
-                <li>
-                    <a href="#">
-                    Catégorie
-                    </a>
-                </li>
+                @foreach(\App\Category::all() as $category)
+                    <li>
+                        <a href="{{route('course.filter', $category->id)}}">
+                            {!! $category->icon !!}
+                            {{$category->name}}
+                        </a>
+                    </li>
+                @endforeach
             </ul>
         </li>
         <li>
@@ -31,19 +43,21 @@
             </ul>
         </li>
         <li>
-            <a href="#">
+            <a href="{{route('participant.index')}}">
                 <i class="fas fa-book"></i>
                 Mes cours
             </a>
             <ul class="dropdown">
-                <li>
-                    <div class="d-flex  ml-2 my-3">
-                        <img class="avatar border-rounded" src="https://blog.hyperiondev.com/wp-content/uploads/2019/02/Blog-Types-of-Web-Dev.jpg"/>
-                        <div class="user-infos">
-                            <a href="#"><small>Titre du cours</small></a>
+                @foreach($coursesUser as $courseUser)
+                    <li>
+                        <div class="d-flex  ml-2 my-3">
+                            <img class="avatar border-rounded" src="/storage/courses/{{$courseUser->course->user_id}}/{{$courseUser->course->image}}"/>
+                            <div class="user-infos">
+                                <a href="#"><small>{{$courseUser->course->title}}</small></a>
+                            </div>
                         </div>
-                    </div>
-                </li>
+                    </li>
+                @endforeach
             </ul>
         </li>
         <li>

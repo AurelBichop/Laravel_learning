@@ -32,6 +32,7 @@ Route::get('/home', 'HomeController@index')->name('home');
  */
 Route::get('/courses', 'CoursesController@courses')->name('courses');
 Route::get('/courses/{slug}', 'CoursesController@course')->name('course.show');
+Route::get('/courses/category/{id}', 'CoursesController@filter')->name('course.filter');
 
 /**
  * Vue formateur
@@ -44,6 +45,14 @@ Route::put('/instructor/courses/{id}/update', 'InstructorController@update')->na
 Route::get('/instructor/courses/{id}/destroy', 'InstructorController@destroy')->name('instructor.destroy');
 Route::get('/instructor/courses/{id}/publish', 'InstructorController@publish')->name('instructor.publish');
 Route::get('/instructor/courses/{id}/participants', 'InstructorController@participant')->name('instructor.participants');
+
+/**
+ * Vue Participant
+ */
+Route::get('/participant/courses', 'ParticipantController@index')->name('participant.index');
+Route::get('/participant/courses/{slug}', 'ParticipantController@show')->name('participant.show');
+Route::get('/participant/courses/{slug}/{section}', 'ParticipantController@section')->name('participant.section');
+
 
 /**
  * Tarification

@@ -60,76 +60,22 @@
             </div>
         </div>
     </div>
-    <div class="member-item set-bg" data-setbg="https://uploads-ssl.webflow.com/5bddf05642686caf6d17eb58/5dc2fd00c29f7abeadd7c332_gPZwCbdS.jpg">
-        <div class="mi-social">
-            <div class="mi-social-inner bg-gradient">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-instagram"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-linkedin"></i></a>
+    @foreach($instructors as $instructor)
+        <div class="member-item set-bg" data-setbg="https://uploads-ssl.webflow.com/5bddf05642686caf6d17eb58/5dc2fd00c29f7abeadd7c332_gPZwCbdS.jpg">
+            <div class="mi-social">
+                <div class="mi-social-inner bg-gradient">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="mi-text text-center">
+                <h5>{{$instructor->name}}</h5>
+                <span>Formateur</span>
             </div>
         </div>
-        <div class="mi-text text-center">
-            <h5>Florent NICOLAS</h5>
-            <span>Formateur</span>
-        </div>
-    </div>
-    <div class="member-item set-bg" data-setbg="https://uploads-ssl.webflow.com/5bddf05642686caf6d17eb58/5dc2fd00c29f7abeadd7c332_gPZwCbdS.jpg">
-        <div class="mi-social">
-            <div class="mi-social-inner bg-gradient">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-instagram"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-linkedin"></i></a>
-            </div>
-        </div>
-        <div class="mi-text text-center">
-            <h5>Florent NICOLAS</h5>
-            <span>Formateur</span>
-        </div>
-    </div>
-    <div class="member-item set-bg" data-setbg="https://uploads-ssl.webflow.com/5bddf05642686caf6d17eb58/5dc2fd00c29f7abeadd7c332_gPZwCbdS.jpg">
-        <div class="mi-social">
-            <div class="mi-social-inner bg-gradient">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-instagram"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-linkedin"></i></a>
-            </div>
-        </div>
-        <div class="mi-text text-center">
-            <h5>Florent NICOLAS</h5>
-            <span>Formateur</span>
-        </div>
-    </div>
-    <div class="member-item set-bg" data-setbg="https://uploads-ssl.webflow.com/5bddf05642686caf6d17eb58/5dc2fd00c29f7abeadd7c332_gPZwCbdS.jpg">
-        <div class="mi-social">
-            <div class="mi-social-inner bg-gradient">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-instagram"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-linkedin"></i></a>
-            </div>
-        </div>
-        <div class="mi-text text-center">
-            <h5>Florent NICOLAS</h5>
-            <span>Formateur</span>
-        </div>
-    </div>
-    <div class="member-item set-bg" data-setbg="https://uploads-ssl.webflow.com/5bddf05642686caf6d17eb58/5dc2fd00c29f7abeadd7c332_gPZwCbdS.jpg">
-        <div class="mi-social">
-            <div class="mi-social-inner bg-gradient">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-instagram"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-linkedin"></i></a>
-            </div>
-        </div>
-        <div class="mi-text text-center">
-            <h5>Florent NICOLAS</h5>
-            <span>Formateur</span>
-        </div>
-    </div>
+    @endforeach
 </section>
 
 <section class="latest-blog spad">

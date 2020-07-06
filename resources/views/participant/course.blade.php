@@ -2,46 +2,41 @@
 
 @section('content')
 
+@php
+
+$section = $course->sections[0];
+$increment = 0;
+
+@endphp
+
 <section class="latest-blog container-fluid px-5 spad">
-    <h2 class="text-center my-3">Nom de la section</h2>
+    <h2 class="text-center my-3">{{$section->name}}</h2>
     <div class="row">
         <div class="col-md-8">
-            <iframe width="950" height="650"
-                src="https://www.youtube.com/embed/tgbNymZ7vqY">
-            </iframe>
+            <video width="800" height="550" controls>
+                <source src="{{asset("storage/courses_sections/$course->user_id/$section->video")}}" type="video/mp4">
+            </video>
         </div>
         <div class="col-md-4">
             <ul class="list-group list-group-flush mt-5 pt-2">
-                <li class="list-group-item bg-light">
-                    <a href="#" class="btn">
-                        <i class="fas fa-book"></i>
-                        Chapitre 1 : Nom de la section
-                    </a>
-                </li>
-                <li class="list-group-item bg-light">
-                    <a href="#" class="btn">
-                        <i class="fas fa-book"></i>
-                        Chapitre 2 : Nom de la section
-                    </a>
-                </li>
-                <li class="list-group-item bg-light">
-                    <a href="#" class="btn">
-                        <i class="fas fa-book"></i>
-                        Chapitre 3 : Nom de la section
-                    </a>
-                </li>
-                <li class="list-group-item bg-light">
-                    <a href="#" class="btn">
-                        <i class="fas fa-book"></i>
-                        Chapitre 4 : Nom de la section
-                    </a>
-                </li>
-                <li class="list-group-item bg-light">
-                    <a href="#" class="btn">
-                        <i class="fas fa-book"></i>
-                        Chapitre 5 : Nom de la section
-                    </a>
-                </li>
+                @foreach($course->sections as $section)
+                    @php
+                        $increment++;
+                    @endphp
+                    <li class="list-group-item bg-light">
+
+                        <a href="{{route('participant.section',
+                                        [
+                                            'slug'=>$course->slug,
+                                            'section'=>$section->slug
+                                        ]
+                                     )}}" class="btn">
+
+                            <i class="fas fa-book"></i>
+                            Chapitre {{ $increment }} : {{$section->name}}
+                        </a>
+                    </li>
+                @endforeach
               </ul>
         </div>
     </div>
